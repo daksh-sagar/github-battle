@@ -1,10 +1,11 @@
 import React from 'react'
+import Popular from './components/Popular'
 import './App.css'
 
 function App() {
   return (
-    <div className='App'>
-      <h3>Done Cleanup</h3>
+    <div className='container'>
+      <Popular />
     </div>
   )
 }
