@@ -5,7 +5,7 @@ import {
   FaCodeBranch,
   FaExclamationTriangle
 } from 'react-icons/fa'
-
+import Loading from './Loading'
 import { fetchPopularRepos } from '../utils/api'
 
 const LanguagesNav = ({ selected, onUpdateLanguage }) => {
@@ -31,14 +31,7 @@ const ReposGrid = ({ repos }) => {
   return (
     <ul className='grid space-around'>
       {repos.map((repo, index) => {
-        const {
-          name,
-          owner,
-          html_url,
-          stargazers_count,
-          forks,
-          open_issues
-        } = repo
+        const { owner, html_url, stargazers_count, forks, open_issues } = repo
         const { login, avatar_url } = owner
 
         return (
@@ -129,7 +122,7 @@ export default class Popular extends React.Component {
           onUpdateLanguage={this.updateLanguage}
         />
 
-        {this.isLoading() && <p>LOADING</p>}
+        {this.isLoading() && <Loading text='Fetching Repos' />}
 
         {error && <p className='error'>{error}</p>}
 
