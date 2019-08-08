@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa'
 import Loading from './Loading'
 import { fetchPopularRepos } from '../utils/api'
+import Tooltip from './Tooltip'
 
 const LanguagesNav = ({ selected, onUpdateLanguage }) => {
   const languages = ['All', 'Go', 'Java', 'JavaScript', 'Kotlin', 'Python']
@@ -49,8 +50,10 @@ const ReposGrid = ({ repos }) => {
             </h2>
             <ul className='card-list'>
               <li>
-                <FaUser color='rgb(255, 191, 116)' size={22} />
-                <a href={`https://github.com/${login}`}>{login}</a>
+                <Tooltip text='Github username'>
+                  <FaUser color='rgb(255, 191, 116)' size={22} />
+                  <a href={`https://github.com/${login}`}>{login}</a>
+                </Tooltip>
               </li>
               <li>
                 <FaStar color='rgb(255, 215, 0)' size={22} />

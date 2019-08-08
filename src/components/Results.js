@@ -9,6 +9,7 @@ import {
 
 import { battle } from '../utils/api'
 import Loading from './Loading'
+import Tooltip from './Tooltip'
 
 export default class Results extends Component {
   constructor(props) {
@@ -77,14 +78,18 @@ export default class Results extends Component {
               </li>
               {winner.profile.location && (
                 <li>
-                  <FaCompass color='rgb(144, 115, 255)' size={22} />
-                  {winner.profile.location}
+                  <Tooltip text="User's Location">
+                    <FaCompass color='rgb(144, 115, 255)' size={22} />
+                    {winner.profile.location}
+                  </Tooltip>
                 </li>
               )}
               {winner.profile.company && (
                 <li>
-                  <FaBriefcase color='#795548' size={22} />
-                  {winner.profile.company}
+                  <Tooltip text="User's Company">
+                    <FaBriefcase color='#795548' size={22} />
+                    {winner.profile.company}
+                  </Tooltip>
                 </li>
               )}
               <li>
