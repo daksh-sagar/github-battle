@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import queryString from 'query-string'
 import {
   FaCompass,
   FaBriefcase,
@@ -24,7 +26,9 @@ export default class Results extends Component {
     }
   }
   componentDidMount() {
-    const { playerOne, playerTwo } = this.props
+    const { playerOne, playerTwo } = queryString.parse(
+      this.props.location.search
+    )
     battle([playerOne, playerTwo])
       .then(players => {
         this.setState({
@@ -152,14 +156,14 @@ export default class Results extends Component {
                 </ul>
               </div>
             </div>
-            <button
+            <Link
               className={`btn ${
                 theme === 'dark' ? 'light-btn' : 'dark-btn'
               } btn-space`}
-              onClick={this.props.onReset}
+              to='/battle'
             >
               Reset
-            </button>
+            </Link>
           </>
         )}
       </ThemeConsumer>

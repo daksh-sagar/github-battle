@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   FaUserFriends,
   FaFighterJet,
@@ -204,14 +205,17 @@ export default class Battle extends React.Component {
                 )}
               </div>
               {playerOne && playerTwo && (
-                <button
+                <Link
                   className={`btn ${
                     theme === 'dark' ? 'light-btn' : 'dark-btn'
                   } btn-space`}
-                  onClick={() => this.setState({ battle: true })}
+                  to={{
+                    pathname: '/battle/results',
+                    search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
+                  }}
                 >
                   Battle
-                </button>
+                </Link>
               )}
             </div>
           </>
